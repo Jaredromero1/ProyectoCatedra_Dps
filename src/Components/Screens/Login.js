@@ -1,10 +1,36 @@
 import { useNavigation } from '@react-navigation/native';
 import  { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image ,Button} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image ,Button,Alert} from 'react-native';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 
 export default function LoginScreen({navigation}){
-  const [user, setUser]= useState('');
+  
+  
+  const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
+
+  const auth = getAuth();
+  const createUser = () => {  
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        navigation.navigate('drawer');
+        setEmail('');
+        setPassword(''); 
+        const user = userCredential.user;
+  
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode)
+      console.log(errorMessage)
+      Alert.alert(errorMessage)
+    });
+
+
+
+  }
   return (
     <View style={styles.container}>
         <View style={styles.logoContainer}>
@@ -14,7 +40,8 @@ export default function LoginScreen({navigation}){
         <TextInput
           style={styles.input}
           placeholder="Correo electrónico"
-          onChangeText={user=>setUser(user)} defaultValue={user}
+          value={email}
+          onChangeText={txt => setEmail(txt)}
           autoCorrect={false}
         />
       </View>
@@ -22,15 +49,14 @@ export default function LoginScreen({navigation}){
         <TextInput
           style={styles.input}
           placeholder="Contraseña"
-           onChangeText={password=>setPassword(password)} defaultValue={password}
+          value={password}
+          onChangeText={txt => setPassword(txt)}
           secureTextEntry={true}
           autoCorrect={false}
         />
       </View>
       <TouchableOpacity style={styles.button} title="Login" onPress={()=>{
-        navigation.navigate('drawer');
-        setUser('');
-        setPassword('');
+        createUser()
       }}
       >
         <Text style={styles.textRegistro}>Iniciar sesión</Text>
