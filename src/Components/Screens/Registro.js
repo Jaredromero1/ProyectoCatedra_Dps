@@ -10,31 +10,58 @@ export default function Registro({navigation}){
 
 
     const auth = getAuth();
+
     const [email,setEmail]=useState('')
     const [password, setPassword] = useState('')
+    const [usuario, setUser] = useState('')
   
     const createUser = () => {   
+
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     
       const user = userCredential.user
+      console.log(user)
       navigation.navigate('Login')
       setEmail('');
       setPassword('');
+      setUser('');
       Alert.alert('Usuario exitosamente creado')
+
     })
+
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-
-      console.log(errorCode)
-      console.log(errorMessage)
       
-      Alert.alert(errorMessage)
-    });
-    }
-   
+      //VALIDACION DE DATOS
 
+
+      if (email == "" & password == "" & usuario == "" ){
+        Alert.alert('Porfavor ingrese datos')
+      }
+      else if (errorMessage == 'Firebase: Error (auth/invalid-email).'){
+
+        Alert.alert('Email invalido intenta de nuevo')
+      }
+      else if (errorMessage == 'Firebase: Error (auth/email-already-in-use).') {
+        Alert.alert('Email ingresado ya esta en uso')
+      
+      }else if (errorMessage == 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+        Alert.alert('La contraseña debe tener almenos 6 caracteres')
+      
+      }else if (errorMessage == 'Firebase: Error (auth/missing-password).') {
+        Alert.alert('Porfavor ingrese la contraseña')
+      
+      }else{
+        console.log(errorCode)
+        console.log(errorMessage)
+        Alert.alert(errorMessage)
+      }
+    });
+
+    }
+    
     return (
         <View style={styles.container}>
             <Text style={styles.title}>REGISTRARSE</Text>
@@ -43,6 +70,8 @@ export default function Registro({navigation}){
                     style={styles.input}
                     placeholder="Usuario"
                     autoCapitalize="none"
+                    value={usuario}
+                    onChangeText={txt => setUser(txt)}
                     autoCorrect={false}
                 />
             </View>
@@ -77,6 +106,7 @@ export default function Registro({navigation}){
             </View>
         </View>
     );
+
 }
 
 const styles = StyleSheet.create({

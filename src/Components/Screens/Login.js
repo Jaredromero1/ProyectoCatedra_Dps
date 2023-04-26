@@ -14,6 +14,7 @@ export default function LoginScreen({navigation}){
   const createUser = () => {  
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+
         navigation.navigate('drawer');
         setEmail('');
         setPassword(''); 
@@ -25,7 +26,22 @@ export default function LoginScreen({navigation}){
       const errorMessage = error.message;
       console.log(errorCode)
       console.log(errorMessage)
-      Alert.alert(errorMessage)
+
+      if (email == "" & password == ""){
+        Alert.alert('Porfavor ingrese los datos')
+
+      }else if(errorMessage == "Firebase: Error (auth/invalid-email)."){
+        Alert.alert('Email invalido, porfavor revisa la informacion')
+
+      }else if(errorMessage == "Firebase: Error (auth/wrong-password)."){
+      Alert.alert('Contraseña invalida')
+
+      }else if(errorMessage == "Firebase: Error (auth/missing-password)."){
+        Alert.alert('Ingresa la contraseña')
+        }
+      else {
+      Alert.alert("Datos no coinciden")
+    }
     });
 
 
