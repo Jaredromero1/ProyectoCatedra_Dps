@@ -1,6 +1,9 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+//Importaciones de pantallas
 import Home from '../Screens/HomeScreen/Home';
+import Restaurant from '../Screens/RestaurantScreen/Restaurant';
+
 import DrawerView from './DrawerView';
 
 const Drawer = createDrawerNavigator();
@@ -23,6 +26,8 @@ export default function Drawer_Navigation(navigation) {
         },
       }}>
       <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Restaurant" component={Restaurant} />
+
     </Drawer.Navigator>
   );
 }
