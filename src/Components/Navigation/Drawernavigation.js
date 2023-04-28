@@ -3,7 +3,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 //Importaciones de pantallas
 import Home from '../Screens/HomeScreen/Home';
 import Restaurant from '../Screens/RestaurantScreen/Restaurant';
-
+import Products from '../Screens/ProductsScreen/Products';
+import Items from '../Screens/FoodItemScreen/Items';
+//Importacion para el diseño del drawer
 import DrawerView from './DrawerView';
 
 const Drawer = createDrawerNavigator();
@@ -19,14 +21,16 @@ export default function Drawer_Navigation(navigation) {
           backgroundColor: '#8F161C',
         },
         drawerActiveTintColor: '#8F161C',
-        drawerInactiveTintColor: '#fff',
+        drawerInactiveTintColor: '#000',
         drawerLabelStyle: {
           marginLeft: 25,
           fontSize: 15,
         },
       }}>
       <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Restaurant" component={Restaurant} />
+      <Drawer.Screen name="Restaurantes" component={Restaurant} />
+      <Drawer.Screen name="Productos" component={Products} />
+      <Drawer.Screen name="Items" component={Items} />
 
     </Drawer.Navigator>
   );

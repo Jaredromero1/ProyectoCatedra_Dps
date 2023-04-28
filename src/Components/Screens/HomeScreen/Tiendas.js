@@ -8,10 +8,10 @@ export default function Products() {
                 return(               
                     <View key={i} style={styles.container}>
                         <TouchableOpacity style={styles.item}>
-                           <Image style={styles.image} source={product.image} />
+                           <Image style={styles.image} source={product.banner} />
                             <View style={styles.contentProducts}>              
                                 <View style={styles.text}>
-                                    <Image style={styles.image2} source={product.image2} />
+                                    <Image style={styles.image2} source={product.logo} />
                                      <View style={styles.text}>
                                        <Text style={styles.name}>{product.name}</Text>                               
                                     </View>                              
@@ -27,10 +27,10 @@ export default function Products() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#F4F4F4",
+        backgroundColor: "#fff",
         borderRadius: 10,
         marginHorizontal: 15,
-        marginVertical: 4,
+        marginBottom: 20,
         borderWidth: 2,
         borderColor: '#eee',
         shadowOffset: {
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         elevation: 0
     },
     contentProducts:{
-        paddingTop: -5,
+        paddingVertical: 5,
         paddingHorizontal: 10,
     },
     image: {
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         marginBottom: 10,
     },
-    
     name: {
         fontSize: 18,
         fontWeight: "bold",

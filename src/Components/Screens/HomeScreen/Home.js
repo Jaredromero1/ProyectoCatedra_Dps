@@ -10,15 +10,15 @@ export default function Home() {
     return (                      
             <>
             <StatusBar/>      
-            <View style={styles.container}>
                 <ScrollView style={styles.scrollstyle}>
-                    <Opciones/>
-                    <Text style={styles.texto}>Promociones</Text>
+                    <View style={styles.container}>
+                        <Opciones/>
+                        <Text style={styles.texto}>Promociones</Text>
                     
-                    <Text style={styles.texto}>Los mejores restaurantes</Text>
-                    <Tiendas />
+                        <Text style={styles.texto}>Los mejores restaurantes</Text>
+                        <Tiendas />
+                    </View>           
                 </ScrollView>       
-            </View>           
          </>                     
     );
 }
