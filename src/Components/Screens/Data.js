@@ -2,8 +2,8 @@ export default[
     {
         id: "1",
         name: "McDonalds",
-        logo: require("../../../../assets/logoMC.png"),
-        banner: require("../../../../assets/MCimg.png"),
+        logo: require("../../../assets/logoMC.png"),
+        banner: require("../../../assets/MCimg.png"),
         menu: [
             {
                 id: 1,
@@ -33,18 +33,26 @@ export default[
                 price: 7.74,
                 image: "../../../../assets/"
             }
+        ],
+        Ubicacion: [
+            {
+                name: "McDonalds",
+                category: 'Restaurant',
+                latitud:'13.7145861',
+                longitud:'-89.1639224',
+            },
         ]
     },
     {
         id: "2",
         name: "Pizza Hut",
-        logo: require("../../../../assets/logoPizza.png"),
-        banner: require("../../../../assets/Pizza.png"),
+        logo: require("../../../assets/logoPizza.png"),
+        banner: require("../../../assets/Pizza.png"),
         menu: [
             {
                 id: 1,
                 name: "Banquete Pizza Especialidad",
-                description: "Pizza de Especialidad + un complemento",
+                description: "Pizza de Especialidad más un complemento",
                 price: 15.95,
                 image: "../../../../assets/"
             },
@@ -65,17 +73,25 @@ export default[
             {
                 id: 4,
                 name: "Banquete Pizza Ingrediente",
-                description: "Pizza de 1 Ingrediente + un complemento",
+                description: "Pizza de 1 Ingrediente más un complemento",
                 price: 14.00,
                 image: "../../../../assets/"
             }
+        ],
+        Ubicacion: [
+            {
+                name: "Pizza Hut",
+                category: 'Restaurant',
+                latitud:'13.7158175',
+                longitud:'-89.1504684',
+            },
         ]
     },
     {
         id: "3",
         name: "China Wok",
-        logo: require("../../../../assets/logoChina.png"),
-        banner: require("../../../../assets/china.png"),
+        logo: require("../../../assets/logoChina.png"),
+        banner: require("../../../assets/china.png"),
         menu: [
             {
                 id: 1,
@@ -105,13 +121,21 @@ export default[
                 price: 6.75,
                 image: "../../../../assets/"
             }
+        ],
+        Ubicacion: [
+            {
+                name: "China Wok",
+                category: 'Restaurant',
+                latitud:'13.7158175',
+                longitud:'-89.1504684',
+            },
         ]
     },
     {
         id: "4",
         name: "Burguer King",
-        logo: require("../../../../assets/burguerlogo.png"),
-        banner: require("../../../../assets/burguer12.jpg"),
+        logo: require("../../../assets/burguerlogo.png"),
+        banner: require("../../../assets/burguer12.jpg"),
         menu: [
             {
                 id: 1,
@@ -141,6 +165,14 @@ export default[
                 price: 8.99,
                 image: "../../../../assets/"
             }
+        ],
+        Ubicacion: [
+            {
+                name: "Burguer King",
+                category: 'Restaurant',
+                latitud:'13.7181284',
+                longitud:'-89.1451909',
+            },
         ]
     },
 ];

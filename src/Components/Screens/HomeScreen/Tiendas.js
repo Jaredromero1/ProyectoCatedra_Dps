@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity, Linking} from "react-native";
-import data from './Data'
+import data from '../Data'
 
-export default function Products() {
+export default function Products({navigation}) {
     return(
         data.map((product,i) => {
                 return(               
-                    <View key={i} style={styles.container}>
-                        <TouchableOpacity style={styles.item}>
+                    <View key={i} style={styles.container} >
+                        <TouchableOpacity style={styles.item} /* onPress={() => { navigation.navigate('Restaurantes');}} */>
                            <Image style={styles.image} source={product.banner} />
                             <View style={styles.contentProducts}>              
                                 <View style={styles.text}>

@@ -5,8 +5,10 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import Tiendas from "./Tiendas";
 
 import Opciones from "./Opciones"
+import Restaurant from "../RestaurantScreen/Restaurant";
+import RestaurantNavigation from "../../Navigation/RestaurantNavigation";
 
-export default function Home() {
+export default function Home({navigation}) {
     return (                      
             <>
             <StatusBar/>      
