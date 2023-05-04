@@ -7,7 +7,7 @@ export default function Products({navigation}) {
         data.map((product,i) => {
                 return(               
                     <View key={i} style={styles.container} >
-                        <TouchableOpacity style={styles.item} /* onPress={() => { navigation.navigate('Restaurantes');}} */>
+                        <TouchableOpacity style={styles.item} /* onPress={() => { navigation.navigate('Productos');}} */>
                            <Image style={styles.image} source={product.banner} />
                             <View style={styles.contentProducts}>              
                                 <View style={styles.text}>
@@ -31,11 +31,9 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginHorizontal: 15,
         marginBottom: 20,
-        borderWidth: 2,
-        borderColor: '#eee',
         shadowOffset: {
-            width: -8,
-            height: 7,
+            width: -1,
+            height: 2,
         },
         shadowOpacity:  0.05,
         shadowRadius: 3.05,

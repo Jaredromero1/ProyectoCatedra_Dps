@@ -4,8 +4,6 @@ import { initializeApp } from "firebase/app";
 import { firebase } from "../Utils/Firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-
-
 export default function Registro({navigation}){
 
 

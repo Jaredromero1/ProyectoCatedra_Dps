@@ -4,7 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../Screens/Login'
 import Registro from '../Screens/Registro'
 import Drawer from '../Navigation/Drawernavigation'
+
 const Stack = createNativeStackNavigator();
+
 export default function Drawer_Navigation(){ 
   return(
     <Stack.Navigator screenOptions={{headerShown:false}}>

@@ -5,6 +5,7 @@ import Home from '../Screens/HomeScreen/Home';
 import Restaurant from '../Screens/RestaurantScreen/Restaurant';
 import Products from '../Screens/ProductsScreen/Products';
 import Items from '../Screens/FoodItemScreen/Items';
+import RestaurantNavigation from '../Navigation/RestaurantNavigation'
 //Importacion para el diseño del drawer
 import DrawerView from './DrawerView';
 
@@ -27,10 +28,9 @@ export default function Drawer_Navigation(navigation) {
           fontSize: 15,
         },
       }}>
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Restaurantes" component={Restaurant} />
-      <Drawer.Screen name="Productos" component={Products} />
-      <Drawer.Screen name="Items" component={Items} />
+     
+      <Drawer.Screen name="Inicio" component={RestaurantNavigation} />
+      <Drawer.Screen name="Items" component={Items} /* options={{ headerShown: false }} *//>
 
     </Drawer.Navigator>
   );

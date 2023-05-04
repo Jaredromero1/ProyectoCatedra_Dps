@@ -1,36 +1,71 @@
-import { StyleSheet, Text, View, TouchableOpacit, ScrollView } from "react-native";
 import React from "react";
+import { StyleSheet, View, Text, Image, TouchableOpacity, Linking} from "react-native";
+import data from '../Data'
+import { ScrollView } from "react-native-gesture-handler";
 
-//Importacion de pantallas
-import Tiendas from "../HomeScreen/Tiendas";
-
-export default function Restaurant({ navigation }) {
-    return (
-        <ScrollView style={styles.scrollstyle}>
-            <View style={styles.container}>
-                <Tiendas />
-            </View>
+export default function Restaurant({navigation}) {
+    return(
+        <ScrollView>
+            {
+                data.map((product,i) => {
+                        return(               
+                            <View key={i} style={styles.container} >
+                                <TouchableOpacity style={styles.item} onPress={() => { navigation.navigate('Productos');}}>
+                                <Image style={styles.image} source={product.banner} />
+                                    <View style={styles.contentProducts}>              
+                                        <View style={styles.text}>
+                                            <Image style={styles.image2} source={product.logo} />
+                                            <View style={styles.text}>
+                                            <Text style={styles.name}>{product.name}</Text>                               
+                                            </View>                              
+                                        </View>                   
+                                    </View>                     
+                                </TouchableOpacity>
+                            </View>       
+                        )
+                })
+            }
         </ScrollView>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "#fff",
         borderRadius: 10,
+        marginHorizontal: 15,
         marginBottom: 20,
-        borderWidth: 2,
-        borderColor: "#eee",
         shadowOffset: {
-            width: -8,
-            height: 7,
+            width: -1,
+            height: 2,
         },
-        shadowOpacity: 0.05,
+        shadowOpacity:  0.05,
         shadowRadius: 3.05,
-        elevation: 0,
-        width: "100%",
+        elevation: 0
     },
-    scrollstyle: {
-        paddingVertical: 15
-    }
+    contentProducts:{
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+    },
+    image: {
+        width: "100%",
+        height: 160,
+        borderRadius: 5,
+        marginBottom: 10,
+    },
+    image2: {
+        width: "12%",
+        height: 41 ,
+        borderRadius: 100,
+        marginBottom: 10,
+    },
+    name: {
+        fontSize: 18,
+        fontWeight: "bold",
+        paddingHorizontal:55,
+        marginVertical:-40,
+    }, 
+    
+  
 });
