@@ -8,6 +8,7 @@ const Details = ({ route }) => {
     const phoneNumber = "72199134";
     const message = `¡Hola! Me gustaria pedir el siguiente producto: ${item.name}.`;
   
+    //Funcion que abre whasapp y envia mensaje sobre producto
     const openWhatsApp = () => {
       const url = `whatsapp://send?phone=${phoneNumber}&text=${message}`;
       Linking.openURL(url)
