@@ -1,11 +1,8 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 //Importaciones de pantallas
-import Home from '../Screens/HomeScreen/Home';
-import Restaurant from '../Screens/RestaurantScreen/Restaurant';
-import Products from '../Screens/ProductsScreen/Products';
-import Items from '../Screens/FoodItemScreen/Items';
 import RestaurantNavigation from '../Navigation/RestaurantNavigation'
+import Home from '../Screens/HomeScreen/Home'
 //Importacion para el diseño del drawer
 import DrawerView from './DrawerView';
 
@@ -14,12 +11,13 @@ export default function Drawer_Navigation(navigation) {
   return (
     <Drawer.Navigator
       useLegacyImplementation
-      initialRouteName="Home"
+      initialRouteName="navigation"
+      drawerPosition="right"
       drawerContent={(props) => <DrawerView {...props} />}
       screenOptions={{
-        headerTintColor: '#fff',
+        headerTintColor: '#000',
         headerStyle: {
-          backgroundColor: '#8F161C',
+          backgroundColor: '#f1f1f1',
         },
         drawerActiveTintColor: '#8F161C',
         drawerInactiveTintColor: '#000',
@@ -28,9 +26,8 @@ export default function Drawer_Navigation(navigation) {
           fontSize: 15,
         },
       }}>
-     
-      <Drawer.Screen name="Inicio" component={RestaurantNavigation} />
-      <Drawer.Screen name="Items" component={Items} /* options={{ headerShown: false }} *//>
+      
+      <Drawer.Screen name="navigation" component={RestaurantNavigation} /* options={{ headerShown: false }} *//>
 
     </Drawer.Navigator>
   );

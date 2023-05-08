@@ -3,20 +3,21 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+import Home from '../Screens/HomeScreen/Home'
 import Restaurant from '../Screens/RestaurantScreen/Restaurant'
 import Products from '../Screens/ProductsScreen/Products'
-import BottomRestaurant from '../Screens/HomeScreen/BottomRestaurant'
-import Home from '../Screens/HomeScreen/Home'
+import Details from '../Screens/FoodDetails/Details'
 
 export default function RestaurantNavigation() {
     
     const Stack = createNativeStackNavigator();
 
     return (
-            <Stack.Navigator>
+            <Stack.Navigator initialRouteName={'Home'} screenOptions={{ headerTintColor:'#000', headerBackTitleVisible: false, headerMode: 'screen' }}>
                 <Stack.Screen name={'Home'} component={Home} options={{ headerShown: false }}/>
-                <Stack.Screen name={'Restaurantess'} component={Restaurant}/>
-                <Stack.Screen name={'Productos'} component={Products}/>
+                <Stack.Screen name={'Restaurantes'} component={Restaurant} />
+                <Stack.Screen name={'Productos'} component={Products} options={{title: '', headerTransparent: true,}}/>
+                <Stack.Screen name={'Detalles'} component={Details} options={{title: '',}}/>
             </Stack.Navigator>
     );
 }

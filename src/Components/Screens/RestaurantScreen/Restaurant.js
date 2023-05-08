@@ -1,71 +1,90 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity, Linking} from "react-native";
-import data from '../Data'
-import { ScrollView } from "react-native-gesture-handler";
+import {View,Text, FlatList, StyleSheet, TouchableOpacity, Image,} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Restaurant({navigation}) {
-    return(
-        <ScrollView>
-            {
-                data.map((product,i) => {
-                        return(               
-                            <View key={i} style={styles.container} >
-                                <TouchableOpacity style={styles.item} onPress={() => { navigation.navigate('Productos');}}>
-                                <Image style={styles.image} source={product.banner} />
-                                    <View style={styles.contentProducts}>              
-                                        <View style={styles.text}>
-                                            <Image style={styles.image2} source={product.logo} />
-                                            <View style={styles.text}>
-                                            <Text style={styles.name}>{product.name}</Text>                               
-                                            </View>                              
-                                        </View>                   
-                                    </View>                     
-                                </TouchableOpacity>
-                            </View>       
-                        )
-                })
-            }
-        </ScrollView>
-    )
-}
+import data from "../Data";
+import color from '../color'
+
+const Restaurant = () => {
+
+    const navigation = useNavigation();
+
+    const BottomData = (restaurantId) => { navigation.navigate("Productos", { restaurantId }); };
+
+    const renderRestaurant = ({ item }) => {
+        return (
+            <TouchableOpacity onPress={() => BottomData(item.id)}>        
+                    <View style={styles.restaurantContainer}>
+                        <View style={styles.imageContainer}>
+                            <Image style={styles.image} source={item.banner} />
+                        </View>
+                        <View style={styles.infoContainer}>
+                            <Image source={item.logo} style={styles.logo} />
+                            <View>
+                                <Text style={styles.name}>{item.name}</Text>
+                                <Text style={styles.subname}>{item.description}</Text>
+                            </View>
+                        </View>
+                    </View>
+            </TouchableOpacity>
+        );
+    };
+
+    return (
+        <View style={styles.container}>
+            <FlatList data={data} renderItem={renderRestaurant} keyExtractor={(item) => item.id} />
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingTop: 10,
+        paddingBottom: 10,    
+    },
+    restaurantContainer: {
+        marginVertical: 10,
         backgroundColor: "#fff",
         borderRadius: 10,
-        marginHorizontal: 15,
-        marginBottom: 20,
-        shadowOffset: {
-            width: -1,
-            height: 2,
-        },
-        shadowOpacity:  0.05,
-        shadowRadius: 3.05,
-        elevation: 0
+        marginHorizontal: 10,
     },
-    contentProducts:{
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-    },
-    image: {
+    imageContainer: {
         width: "100%",
-        height: 160,
         borderRadius: 5,
-        marginBottom: 10,
+        
     },
-    image2: {
-        width: "12%",
-        height: 41 ,
-        borderRadius: 100,
-        marginBottom: 10,
+    infoContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+    },
+    logo: {
+        width: 50,
+        height: 50,
+        marginRight: 15,
+        borderRadius: '50%',
+        resizeMode: 'cover',
     },
     name: {
         fontSize: 18,
         fontWeight: "bold",
-        paddingHorizontal:55,
-        marginVertical:-40,
-    }, 
-    
-  
+        color: color.TextColor,
+    },
+    subname: {
+        fontSize: 11,
+        paddingTop: 2,
+        color: color.TextColor,
+    },
+    image: {
+        width: "100%",
+        height: 160,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        
+    },
 });
+
+export default Restaurant;
+

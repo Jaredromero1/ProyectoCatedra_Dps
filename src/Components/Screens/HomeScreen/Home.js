@@ -3,62 +3,49 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from "react-native";
 //importaciones de componentes
 import Tiendas from "./Tiendas";
+import Promociones from "./Promociones";
 
-import Opciones from "./Opciones"
-import Restaurant from "../RestaurantScreen/Restaurant";
-import RestaurantNavigation from "../../Navigation/RestaurantNavigation";
-import BottomRestaurant from "./BottomRestaurant";
-
-export default function Home({navigation}) {
-    return (                      
-            <>
-                  
-                <ScrollView style={styles.scrollstyle}>
-                    <View style={styles.container}>
-                        {/* <Opciones/> */}
-
-                        <TouchableOpacity
-            style={styles.Bottom}
-            onPress={() => {
-                navigation.navigate("Restaurantess");
-            }}
-        >
-            <Image
-                style={styles.imageBottom}
-                source={require("../../../../assets/restaurant.png")}
-            />
-            <Text style={styles.textBottom}>Restaurante</Text>
-        </TouchableOpacity>
-                        <Text style={styles.texto}>Promociones</Text>
-                    
-                        <Text style={styles.texto}>Los mejores restaurantes</Text>
-                        <Tiendas />
-                    </View>           
-                </ScrollView>       
-         </>                     
+export default function Home({ navigation }) {
+    return (
+        <>
+            <StatusBar />
+            <ScrollView style={styles.scrollstyle}>
+                <View style={styles.container}>
+                    <TouchableOpacity style={styles.Bottom} onPress={() => {navigation.navigate("Restaurantes");}}>
+                        <Image style={styles.imageBottom} source={require("../../../../assets/store.png")} />
+                        <Text style={styles.textBottom}>RESTAURANTES</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.texto}>Promociones</Text>
+                    <Promociones />
+                    <Text style={styles.texto}>Los mejores restaurantes</Text>
+                    <Tiendas />
+                </View>
+            </ScrollView>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
-   texto: {
+    texto: {
         fontSize: 20,
         fontWeight: "bold",
-        paddingHorizontal:15,
+        paddingHorizontal: 15,
         marginTop: 20,
         marginBottom: 20,
-        color: "#6D6D6D",    
-    }, 
+        color: "#6D6D6D",
+    },
     Bottom: {
-        backgroundColor: '#C3685E',
+        backgroundColor: "#FFAA21",
+        flexDirection: 'row',
         marginHorizontal: 15,
         height: 120,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 5,
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 10,
         shadowColor: "#000000",
         shadowOffset: {
-            width: -7,
-            height: 7,
+            width: -1,
+            height: 1,
         },
         shadowOpacity: 0.05,
         shadowRadius: 3.05,
@@ -66,13 +53,14 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     textBottom: {
-        color: '#fff',
-        fontWeight: 'bold',
+        color: "#000",
         fontSize: 18,
         paddingVertical: 5,
+        fontWeight: 'bold',
     },
     imageBottom: {
-        width: 45,
-        height: 45,
-    }
+        width: 25,
+        height: 25,
+        marginRight: 15, 
+    },
 });
