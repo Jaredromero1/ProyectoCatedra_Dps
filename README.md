@@ -1,9 +1,9 @@
 # ProyectoCatedraDPS DPS441 G01
 
 ## Integrantes
-+ Luis Fernando Lovo Juarez LJ222345
-+ Miguel Alexander Perez Ramirez PR222602
-+ Jared Jazer Romero Orellana RO201303
++ Jared Jazer Romero Orellana - RO201303
++ Luis Fernando Lovo Juarez - LJ222345
++ Miguel Alexander Perez Ramirez - PR222602
 
 ## Links
 - Manual de usuario
