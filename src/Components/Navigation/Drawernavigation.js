@@ -7,6 +7,7 @@ import Home from '../Screens/HomeScreen/Home'
 import DrawerView from './DrawerView';
 
 const Drawer = createDrawerNavigator();
+
 export default function Drawer_Navigation(navigation) {
   return (
     <Drawer.Navigator
@@ -27,7 +28,7 @@ export default function Drawer_Navigation(navigation) {
         },
       }}>
       
-      <Drawer.Screen name="navigation" component={RestaurantNavigation} /* options={{ headerShown: false }} *//>
+      <Drawer.Screen name="Inicio" component={RestaurantNavigation} /* options={{ headerShown: false }} *//>
 
     </Drawer.Navigator>
   );

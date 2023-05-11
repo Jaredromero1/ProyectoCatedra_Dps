@@ -1,9 +1,10 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, SafeAreaView } from "react-native";
 //importaciones de componentes
 import Tiendas from "./Tiendas";
 import Promociones from "./Promociones";
+import color from "../color";
 
 export default function Home({ navigation }) {
     return (
@@ -19,6 +20,9 @@ export default function Home({ navigation }) {
                     <Promociones />
                     <Text style={styles.texto}>Los mejores restaurantes</Text>
                     <Tiendas />
+                    <TouchableOpacity style={styles.buttonSalir} onPress={() => {navigation.navigate("Login");}}>
+                        <Text style={styles.TextbuttonSalir}>Cerrar sesión</Text>
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
         </>
@@ -26,10 +30,12 @@ export default function Home({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        marginHorizontal: 15
+    },
     texto: {
         fontSize: 20,
         fontWeight: "bold",
-        paddingHorizontal: 15,
         marginTop: 20,
         marginBottom: 20,
         color: "#6D6D6D",
@@ -37,7 +43,6 @@ const styles = StyleSheet.create({
     Bottom: {
         backgroundColor: "#FFAA21",
         flexDirection: 'row',
-        marginHorizontal: 15,
         height: 120,
         alignItems: "center",
         justifyContent: "center",
@@ -63,4 +68,17 @@ const styles = StyleSheet.create({
         height: 25,
         marginRight: 15, 
     },
+    buttonSalir: {
+        width: '100%',
+        paddingVertical: 25,
+        backgroundColor: color.CerrarSesion,
+        marginBottom: 20,
+        alignItems: 'center',
+        borderRadius: 10,
+    },
+    TextbuttonSalir: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+    }
 });

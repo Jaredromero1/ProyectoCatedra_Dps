@@ -15,7 +15,7 @@ const Promociones = () => {
     };
 
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         backgroundColor: "#fff",
         borderRadius: 10,
-        marginHorizontal: 10,
+        marginRight: 15,
     },
     imageContainer: {
         width: 200,

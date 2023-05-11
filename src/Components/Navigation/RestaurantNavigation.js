@@ -14,7 +14,7 @@ export default function RestaurantNavigation() {
 
     return (
             <Stack.Navigator initialRouteName={'Home'} screenOptions={{ headerTintColor:'#000', headerBackTitleVisible: false, headerMode: 'screen' }}>
-                <Stack.Screen name={'Home'} component={Home} options={{ headerShown: false }}/>
+                <Stack.Screen name={'Home'} component={Home} />
                 <Stack.Screen name={'Restaurantes'} component={Restaurant} />
                 <Stack.Screen name={'Productos'} component={Products} options={{title: '', headerTransparent: true,}}/>
                 <Stack.Screen name={'Detalles'} component={Details} options={{title: '',}}/>
