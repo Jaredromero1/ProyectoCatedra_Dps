@@ -1,16 +1,16 @@
-import {View,Text, FlatList, StyleSheet, TouchableOpacity, Image,} from "react-native";
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from "react-native";
 import React from "react";
 
 import DataPromo from "../DataPromo";
 
 const Promociones = () => {
-    const renderPromociones = ({item}) => {
+    const renderPromociones = ({ item }) => {
         return (
-          <TouchableOpacity style={styles.CardContainer}>
-              <View style={styles.imageContainer}>
-                  <Image style={styles.image} source={item.image} />
-              </View>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.CardContainer}>
+                <View style={styles.imageContainer}>
+                    <Image style={styles.image} source={item.image} />
+                </View>
+            </TouchableOpacity>
         );
     };
 
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         marginRight: 15,
     },
     imageContainer: {
-        width: 200,
+        width: 280,
         borderRadius: 10,
     },
     image: {

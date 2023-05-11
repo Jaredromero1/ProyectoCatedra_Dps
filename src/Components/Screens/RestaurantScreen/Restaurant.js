@@ -5,10 +5,9 @@ import color from "../color";
 
 const Restaurant = ({navigation}) => {
     const [restaurants, setRestaurants] = useState([]);
-    const url = `https://yaa.onrender.com/api/restaurantes`
 
     useEffect(() => {
-            fetch(url).then((response) => response.json()).then((resjson) => setRestaurants(resjson));
+            fetch(`https://yaa.onrender.com/api/restaurantes`).then((response) => response.json()).then((resjson) => setRestaurants(resjson));
     }, []);
 
     const BottomData = (restaurantId) => {

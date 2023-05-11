@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     },
     buttonSalir: {
         width: '100%',
-        paddingVertical: 25,
+        paddingVertical: 18,
         backgroundColor: color.CerrarSesion,
         marginBottom: 20,
         alignItems: 'center',

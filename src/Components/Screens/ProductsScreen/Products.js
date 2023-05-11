@@ -4,20 +4,23 @@ import MapView, { Marker } from "react-native-maps";
 
 import color from "../color";
 
-const Products = ({ route, navigation }) => {
+const Products = ({ route , navigation }) => {
     //API
-    const [productos, setProducts] = useState([]);
+    const [restaurantInfo, setRestaurantInfo] = useState({});
+    const [menuItems, setMenuItems] = useState([]);
     const { restaurantId } = route.params;
-
+    
     useEffect(() => {
-        fetch(`https://yaa.onrender.com/api/restaurantes/${restaurantId}/menu`)
-            .then((response) => response.json())
-            .then((data) => setProducts(data));
+      fetch(`https://yaa.onrender.com/api/restaurant/${restaurantId}`).then((response) => response.json()).then((info) => setRestaurantInfo(info));
     }, []);
 
+    useEffect(() => {
+      fetch(`https://yaa.onrender.com/api/restaurantes/${restaurantId}/menu`).then((response) => response.json()).then((data) => setMenuItems(data));
+    }, []);
+    
     //Realiza la llamada hacia el restaurante
-    const handleCall = ({ item }) => {
-        Linking.openURL(`tel:${item.number}`);
+    const handleCall = () => {
+        Linking.openURL(`tel:${restaurantInfo.number}`);
     };
 
     //Mmanda la informacion a la pantalla de Details
@@ -25,23 +28,41 @@ const Products = ({ route, navigation }) => {
         navigation.navigate("Detalles", { item });
     };
 
+    const initialRegion = {
+      latitude: restaurantInfo.latitud,
+      longitude: restaurantInfo.longitud,
+      latitudeDelta: 0.008,
+      longitudeDelta: 0.008,
+    };
+
     //Cabecera de la pantalla
-    const headerItemScreen = ({ item }) => {
+    const headerItemScreen = () => {
         return (
-            <View style={styles.header}>
-                <Image source={{uri:item.banner}} style={styles.banner} />
+            <View key={restaurantInfo.id} style={styles.header}>
+                <Image source={{uri:restaurantInfo.banner}} style={styles.banner} />
                 <View style={styles.logo}>
-                    <Image source={{uri:item.logo}} style={styles.imagelogo} />
+                    <Image source={{uri:restaurantInfo.logo}} style={styles.imagelogo} />
                 </View>
                 <View style={styles.containerInfo}>
                     <View style={styles.info}>
-                        <Text style={styles.nameInfo}>{item.name}</Text>
-                        <Text style={styles.description}>{item.description}</Text>
+                        <Text style={styles.nameInfo}>{restaurantInfo.name}</Text>
+                        <Text style={styles.description}>{restaurantInfo.description}</Text>
                     </View>
                     <TouchableOpacity style={styles.bottomCall} onPress={handleCall} >
                         <Image source={require("../../../../assets/telephone.png")} style={styles.call} />
                     </TouchableOpacity>
                 </View>
+                <View style={styles.containerMap}>
+                  <MapView style={styles.map} region={initialRegion} scrollEnabled={false}>
+                          <Marker
+                            
+                            coordinate={{
+                              latitude: restaurantInfo.latitud,
+                              longitude: restaurantInfo.longitud,
+                            }}
+                          />
+                </MapView>
+              </View>
             </View>
         );
     };
@@ -64,8 +85,8 @@ const Products = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <FlatList
-                data={productos}
-                /* ListHeaderComponent={headerItemScreen}  */
+                data={menuItems}
+                ListHeaderComponent={headerItemScreen} 
                 renderItem={renderMenuItem}
                 keyExtractor={(item) => item.id}
             />
@@ -99,6 +120,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 0.5,
         borderColor: "#c1c1c1",
+        backgroundColor: "#fff"
     },
     containerInfo: {
         flexDirection: "row",
